@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>regist</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="top_content">
+					<div id="header">
+						<div id="rightheader">
+							<p>
+								2021/11/20
+								<br />
+							</p>
+						</div>
+						<div id="topheader">
+						</div>
+						<div id="navigation">
+						</div>
+					</div>
+				<div id="content">
+					<p id="whereami">
+					</p>
+					<h1>
+						Register
+					</h1>
+					<form th:action="@{/user/register}" method="post">
+						<table cellpadding="0" cellspacing="0" border="0"
+							class="form_table">
+							<tr>
+								<td valign="middle" align="right">
+									Username:
+								</td>
+								<td valign="middle" align="left">
+									<input type="text" class="inputgri" name="username" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="middle" align="right">
+									Real name:
+								</td>
+								<td valign="middle" align="left">
+									<input type="text" class="inputgri" name="realname" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="middle" align="right">
+									Password:
+								</td>
+								<td valign="middle" align="left">
+									<input type="password" class="inputgri" name="password" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="middle" align="right">
+									Gender:
+								</td>
+								<td valign="middle" align="left">
+									Male
+									<input type="radio" class="inputgri" name="gender" value="1" checked="checked"/>
+									Female
+									<input type="radio" class="inputgri" name="gender" value="0"/>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									Verification Code:
+								</td>
+								<td valign="middle" align="left">
+									<input type="text" class="inputgri" name="code" />
+								</td>
+
+								<td valign="middle" align="right">
+									<img id="num" th:src="@{/user/generateImageCode}" />
+									<a href="javascript:;" onclick="changeImageCode()">Next</a>
+									<script>
+										function changeImageCode(){
+											document.getElementById('num').src = '[[@{/user/generateImageCode}]]?'+(new Date()).getTime()
+										}
+									</script>
+								</td>
+							</tr>
+						</table>
+						<p>
+							<input type="submit" class="button" value="Register &raquo;" />
+							<a th:href="@{/login}">Already have an account, return to login!</a>
+						</p>
+					</form>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="footer_bg">
+				ABC@126.com
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
